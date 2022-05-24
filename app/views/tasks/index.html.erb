@@ -1,5 +1,7 @@
 <ul>
   <% @tasks.each do |task| %>
-    <li>Title: <%= link_to task.title, task_path(:id => task.id ) %>, Details: <%= task.details %>, Completed: <%= task.completed %></li>
+    <li><i class="<%= task.completed ? "fas fa-check-square" : "fas fa-square" %>"></i> Title: <%= link_to task.title, task_path(:id => task.id) %>, Details: <%= task.details %>, Completed: <%= task.completed %> <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add a new task", tasks_new_path %>
